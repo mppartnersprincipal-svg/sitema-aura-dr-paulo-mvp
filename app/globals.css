@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tinta: #0e2238;
+  --color-tinta-800: #16304d;
+  --color-tinta-700: #1f3f63;
+  --color-tinta-100: #e6ebf2;
+  --color-papel: #f6f4ef;
+  --color-papel-escuro: #ece8df;
+  --color-linha: #ddd8cc;
+  --color-texto: #1b2433;
+  --color-suave: #5a6577;
+  --color-acao: #1d7a4f;
+  --color-acao-escuro: #145c3a;
+  --color-acao-claro: #e3f1e9;
+  --color-ouro: #a8864f;
+  --color-alerta: #9a6514;
+  --color-alerta-claro: #fdf3e1;
+  --color-perigo: #b3261e;
+  --color-perigo-claro: #fbe9e7;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-titulo), ui-serif, Georgia, serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-papel);
+  color: var(--color-texto);
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-semibold transition-colors focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-tinta-700 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-acao {
+    @apply bg-acao text-white hover:bg-acao-escuro;
+  }
+  .btn-primario {
+    @apply bg-tinta text-white hover:bg-tinta-800;
+  }
+  .btn-secundario {
+    @apply border border-tinta/25 bg-white text-tinta hover:bg-tinta-100;
+  }
+  .btn-fantasma {
+    @apply text-tinta hover:bg-tinta-100;
+  }
+  .btn-sm {
+    @apply px-3 py-2 text-sm;
+  }
+  .campo {
+    @apply w-full rounded-lg border border-linha bg-white px-4 py-3 text-base text-texto placeholder:text-suave/70 focus:border-tinta-700 focus:outline-2 focus:outline-tinta-700/20;
+  }
+  .rotulo {
+    @apply mb-1.5 block text-sm font-semibold text-tinta;
+  }
+  .cartao {
+    @apply rounded-2xl border border-linha bg-white;
+  }
+  .titulo {
+    @apply font-serif tracking-tight text-tinta;
+  }
+  .sobretitulo {
+    @apply text-xs font-semibold tracking-[0.18em] text-ouro uppercase;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+}
